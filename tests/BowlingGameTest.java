@@ -1,5 +1,8 @@
 import org.junit.Test;
 
 public class BowlingGameTest {
-    BowlingGame game = new BowlingGame();
+    @Test
+    public void testGutterGame() {
+        BowlingGame bowlingGame = new BowlingGame();
+    }
 }
