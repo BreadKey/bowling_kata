@@ -1,23 +1,29 @@
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class BowlingGameTest {
+class BowlingGameTest {
     @Test
     public void testGutterGame() {
         BowlingGame bowlingGame = new BowlingGame();
-        for (int i = 0; i < 20; i++) {
-            bowlingGame.roll(0);
-        }
+
+        rollMany(bowlingGame, 20, 0);
+
         assertEquals(0, bowlingGame.score());
     }
 
     @Test
     public void testAllOnes() {
         BowlingGame bowlingGame = new BowlingGame();
-        for (int i = 0; i < 20; i++) {
-            bowlingGame.roll(1);
-        }
+
+        rollMany(bowlingGame, 20, 1);
+
         assertEquals(20, bowlingGame.score());
+    }
+
+    private void rollMany(BowlingGame bowlingGame, int n, int pins) {
+        for (int i = 0; i < n; i++) {
+            bowlingGame.roll(pins);
+        }
     }
 }
