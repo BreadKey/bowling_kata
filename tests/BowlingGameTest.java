@@ -27,9 +27,9 @@ class BowlingGameTest {
 
     @Test
     public void testOneSpare() {
-        bowlingGame.roll(5);
-        bowlingGame.roll(5); // 스페어!
+        rollSpare();
         bowlingGame.roll(3);
+        rollMany(17, 0);
 
         assertEquals(16, bowlingGame.score());
     }
@@ -38,5 +38,10 @@ class BowlingGameTest {
         for (int i = 0; i < n; i++) {
             bowlingGame.roll(pins);
         }
+    }
+
+    private void rollSpare() {
+        bowlingGame.roll(5);
+        bowlingGame.roll(5);
     }
 }
