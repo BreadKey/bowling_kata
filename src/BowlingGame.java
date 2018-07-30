@@ -16,7 +16,7 @@ public class BowlingGame {
 
         if (currentRoll[currentPlayer] % 2 == 0) {
             if (isLastPlayer(currentPlayer)) {
-                currentPlayer = 0
+                currentPlayer = 0;
             }
             else {
                 currentPlayer += 1;
