@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BowlingGameTest {
     private BowlingGame soloBowlingGame;
-    
+
     @BeforeEach
     public void setUp() {
         soloBowlingGame = new BowlingGame(1);
@@ -48,6 +48,21 @@ class BowlingGameTest {
     public void testPerfectGame() {
         rollMany(12, 10);
         assertEquals(300, soloBowlingGame.score(0));
+    }
+
+    @Test
+    public void testTwoPlayerBowlingGame() {
+        BowlingGame bowlingGame = new BowlingGame(2);
+
+        // player0 turn
+        bowlingGame.roll(3);
+        bowlingGame.roll(4);
+
+        // player1 turn
+        bowlingGame.roll(5);
+        bowlingGame.roll(4);
+
+        assertEquals(7, bowlingGame.score(0));
     }
 
     private void rollMany(int n, int pins) {
