@@ -3,11 +3,13 @@ public class BowlingGame {
     private int currentRoll[];
     private int numberOfPlayers;
     private int currentPlayer = 0;
+    private int currentBall[];
 
     public BowlingGame(int numberOfPlayers) {
         this.numberOfPlayers = numberOfPlayers;
         rolls = new int[numberOfPlayers][21];
         currentRoll = new int[numberOfPlayers];
+        currentBall = new int[numberOfPlayers];
     }
 
     public void roll(int pins) {
@@ -18,8 +20,12 @@ public class BowlingGame {
             turnOver();
         }
 
-        else if (currentRoll[currentPlayer] % 2 == 0) {
+        else if (currentBall[currentPlayer] == 1) {
             turnOver();
+        }
+
+        else {
+            currentBall[currentPlayer] += 1;
         }
     }
 
@@ -50,6 +56,8 @@ public class BowlingGame {
     }
 
     private void turnOver() {
+        currentBall[currentPlayer] = 0;
+
         if (isLastPlayer(currentPlayer)) {
             currentPlayer = 0;
         }
