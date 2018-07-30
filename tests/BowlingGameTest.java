@@ -4,64 +4,64 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BowlingGameTest {
-    private BowlingGame bowlingGame;
-
+    private BowlingGame soloBowlingGame;
+    
     @BeforeEach
     public void setUp() {
-        bowlingGame = new BowlingGame(1);
+        soloBowlingGame = new BowlingGame(1);
     }
 
     @Test
     public void testGutterGame() {
         rollMany(20, 0);
 
-        assertEquals(0, bowlingGame.score(0));
+        assertEquals(0, soloBowlingGame.score(0));
     }
 
     @Test
     public void testAllOnes() {
         rollMany(20, 1);
 
-        assertEquals(20, bowlingGame.score(0));
+        assertEquals(20, soloBowlingGame.score(0));
     }
 
     @Test
     public void testOneSpare() {
         rollSpare();
-        bowlingGame.roll(3);
+        soloBowlingGame.roll(3);
         rollMany(17, 0);
 
-        assertEquals(16, bowlingGame.score(0));
+        assertEquals(16, soloBowlingGame.score(0));
     }
 
     @Test
     public void testOneStrike() {
         rollStrike();
-        bowlingGame.roll(3);
-        bowlingGame.roll(4);
+        soloBowlingGame.roll(3);
+        soloBowlingGame.roll(4);
         rollMany(16, 0);
 
-        assertEquals(24, bowlingGame.score(0));
+        assertEquals(24, soloBowlingGame.score(0));
     }
 
     @Test
     public void testPerfectGame() {
         rollMany(12, 10);
-        assertEquals(300, bowlingGame.score(0));
+        assertEquals(300, soloBowlingGame.score(0));
     }
 
     private void rollMany(int n, int pins) {
         for (int i = 0; i < n; i++) {
-            bowlingGame.roll(pins);
+            soloBowlingGame.roll(pins);
         }
     }
 
     private void rollStrike() {
-        bowlingGame.roll(10);
+        soloBowlingGame.roll(10);
     }
 
     private void rollSpare() {
-        bowlingGame.roll(5);
-        bowlingGame.roll(5);
+        soloBowlingGame.roll(5);
+        soloBowlingGame.roll(5);
     }
 }
