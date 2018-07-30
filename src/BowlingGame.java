@@ -14,7 +14,16 @@ public class BowlingGame {
         rolls[currentPlayer][currentRoll[currentPlayer]] = pins;
         currentRoll[currentPlayer] += 1;
 
-        if (currentRoll[currentPlayer] % 2 == 0) {
+        if (pins == 10) {
+            if (isLastPlayer(currentPlayer)) {
+                currentPlayer = 0;
+            }
+            else {
+                currentPlayer += 1;
+            }
+        }
+
+        else if (currentRoll[currentPlayer] % 2 == 0) {
             if (isLastPlayer(currentPlayer)) {
                 currentPlayer = 0;
             }
