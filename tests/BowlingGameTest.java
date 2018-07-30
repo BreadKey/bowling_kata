@@ -73,6 +73,39 @@ class BowlingGameTest {
         assertEquals(1, bowlingGame.getCurrentPlayer());
     }
 
+    @Test
+    public void testTwoPlayerStrike() {
+        BowlingGame bowlingGame = new BowlingGame(3);
+
+        // player 0
+        rollStrike(bowlingGame);
+
+        // player 1
+        rollStrike(bowlingGame);
+
+        // player 2
+        bowlingGame.roll(3);
+        bowlingGame.roll(6);
+
+        // player 0
+        bowlingGame.roll(6);
+        bowlingGame.roll(3);
+
+        // player 1
+        bowlingGame.roll(3);
+        bowlingGame.roll(4);
+
+        // player 2
+        bowlingGame.roll(3);
+        bowlingGame.roll(5);
+
+        rollMany(bowlingGame, 16 + 16 + 16, 0);
+
+        assertEquals(28, bowlingGame.score(0));
+        assertEquals(24, bowlingGame.score(1));
+        assertEquals(17, bowlingGame.score(2));
+    }
+
     private void rollMany(BowlingGame bowlingGame, int n, int pins) {
         for (int i = 0; i < n; i++) {
             bowlingGame.roll(pins);
