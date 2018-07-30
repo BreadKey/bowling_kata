@@ -13,40 +13,40 @@ class BowlingGameTest {
 
     @Test
     public void testGutterGame() {
-        rollMany(20, 0);
+        rollMany(soloBowlingGame,20, 0);
 
         assertEquals(0, soloBowlingGame.score(0));
     }
 
     @Test
     public void testAllOnes() {
-        rollMany(20, 1);
+        rollMany(soloBowlingGame,20, 1);
 
         assertEquals(20, soloBowlingGame.score(0));
     }
 
     @Test
     public void testOneSpare() {
-        rollSpare();
+        rollSpare(soloBowlingGame);
         soloBowlingGame.roll(3);
-        rollMany(17, 0);
+        rollMany(soloBowlingGame,17, 0);
 
         assertEquals(16, soloBowlingGame.score(0));
     }
 
     @Test
     public void testOneStrike() {
-        rollStrike();
+        rollStrike(soloBowlingGame);
         soloBowlingGame.roll(3);
         soloBowlingGame.roll(4);
-        rollMany(16, 0);
+        rollMany(soloBowlingGame,16, 0);
 
         assertEquals(24, soloBowlingGame.score(0));
     }
 
     @Test
     public void testPerfectGame() {
-        rollMany(12, 10);
+        rollMany(soloBowlingGame,12, 10);
         assertEquals(300, soloBowlingGame.score(0));
     }
 
@@ -66,25 +66,25 @@ class BowlingGameTest {
     }
 
     @Test
-    public void testCurrentPlyaerAfterStrike() {
+    public void testCurrentPlayerAfterStrike() {
         BowlingGame bowlingGame = new BowlingGame(2);
-        bowlingGame.roll(10); // strike
+        rollStrike(bowlingGame); // strike
 
         assertEquals(1, bowlingGame.getCurrentPlayer());
     }
 
-    private void rollMany(int n, int pins) {
+    private void rollMany(BowlingGame bowlingGame, int n, int pins) {
         for (int i = 0; i < n; i++) {
-            soloBowlingGame.roll(pins);
+            bowlingGame.roll(pins);
         }
     }
 
-    private void rollStrike() {
-        soloBowlingGame.roll(10);
+    private void rollStrike(BowlingGame bowlingGame) {
+        bowlingGame.roll(10);
     }
 
-    private void rollSpare() {
-        soloBowlingGame.roll(5);
-        soloBowlingGame.roll(5);
+    private void rollSpare(BowlingGame bowlingGame) {
+        bowlingGame.roll(5);
+        bowlingGame.roll(5);
     }
 }
