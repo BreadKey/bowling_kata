@@ -13,6 +13,10 @@ public class BowlingGame {
     public void roll(int pins) {
         rolls[currentPlayer][currentRoll[currentPlayer]] = pins;
         currentRoll[currentPlayer] += 1;
+
+        if (currentRoll[currentPlayer] % 2 == 0) {
+            currentPlayer += 1;
+        }
     }
 
     public int score(int playerId) {
@@ -57,5 +61,13 @@ public class BowlingGame {
 
     private int spareBonus(int frameIndex, int playerId) {
         return rolls[playerId][frameIndex + 2];
+    }
+
+    public int getNumberOfPlayers() {
+        return numberOfPlayers;
+    }
+
+    public int getCurrentPlayer() {
+        return currentPlayer;
     }
 }
