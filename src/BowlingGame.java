@@ -15,10 +15,11 @@ public class BowlingGame {
         currentRoll[currentPlayer] += 1;
 
         if (currentRoll[currentPlayer] % 2 == 0) {
-            currentPlayer += 1;
-
-            if (currentPlayer == numberOfPlayers) {
-                currentPlayer = 0;
+            if (isLastPlayer(currentPlayer)) {
+                currentPlayer = 0
+            }
+            else {
+                currentPlayer += 1;
             }
         }
     }
@@ -65,6 +66,10 @@ public class BowlingGame {
 
     private int spareBonus(int frameIndex, int playerId) {
         return rolls[playerId][frameIndex + 2];
+    }
+
+    private boolean isLastPlayer(int player) {
+        return player + 1 == numberOfPlayers;
     }
 
     public int getNumberOfPlayers() {
