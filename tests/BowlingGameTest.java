@@ -36,7 +36,7 @@ class BowlingGameTest {
 
     @Test
     public void testOneStrike() {
-        bowlingGame.roll(10); // 스트라이크
+        rollStrike();
         bowlingGame.roll(3);
         bowlingGame.roll(4);
         rollMany(16, 0);
@@ -48,6 +48,10 @@ class BowlingGameTest {
         for (int i = 0; i < n; i++) {
             bowlingGame.roll(pins);
         }
+    }
+
+    private void rollStrike() {
+        bowlingGame.roll(10);
     }
 
     private void rollSpare() {
