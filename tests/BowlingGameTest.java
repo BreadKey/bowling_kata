@@ -8,21 +8,21 @@ class BowlingGameTest {
 
     @BeforeEach
     public void setUp() {
-        bowlingGame = new BowlingGame();
+        bowlingGame = new BowlingGame(1);
     }
 
     @Test
     public void testGutterGame() {
         rollMany(20, 0);
 
-        assertEquals(0, bowlingGame.score());
+        assertEquals(0, bowlingGame.score(0));
     }
 
     @Test
     public void testAllOnes() {
         rollMany(20, 1);
 
-        assertEquals(20, bowlingGame.score());
+        assertEquals(20, bowlingGame.score(0));
     }
 
     @Test
@@ -31,7 +31,7 @@ class BowlingGameTest {
         bowlingGame.roll(3);
         rollMany(17, 0);
 
-        assertEquals(16, bowlingGame.score());
+        assertEquals(16, bowlingGame.score(0));
     }
 
     @Test
@@ -41,13 +41,13 @@ class BowlingGameTest {
         bowlingGame.roll(4);
         rollMany(16, 0);
 
-        assertEquals(24, bowlingGame.score());
+        assertEquals(24, bowlingGame.score(0));
     }
 
     @Test
     public void testPerfectGame() {
         rollMany(12, 10);
-        assertEquals(300, bowlingGame.score());
+        assertEquals(300, bowlingGame.score(0));
     }
 
     private void rollMany(int n, int pins) {
