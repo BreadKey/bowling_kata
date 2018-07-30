@@ -16,6 +16,10 @@ public class BowlingGame {
 
         if (currentRoll[currentPlayer] % 2 == 0) {
             currentPlayer += 1;
+
+            if (currentPlayer == numberOfPlayers) {
+                currentPlayer = 0;
+            }
         }
     }
 
