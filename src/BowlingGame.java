@@ -16,11 +16,7 @@ public class BowlingGame {
         rolls[currentPlayer][currentRoll[currentPlayer]] = pins;
         currentRoll[currentPlayer] += 1;
 
-        if (pins == 10) {
-            turnOver();
-        }
-
-        else if (currentBall[currentPlayer] == 1) {
+        if (isTurnOver(pins)) {
             turnOver();
         }
 
@@ -53,6 +49,13 @@ public class BowlingGame {
         }
 
         return score;
+    }
+
+    private boolean isTurnOver(int pins) {
+        if (pins == 10) {
+            return true;
+        }
+        else return currentBall[currentPlayer] == 1;
     }
 
     private void turnOver() {
