@@ -15,21 +15,11 @@ public class BowlingGame {
         currentRoll[currentPlayer] += 1;
 
         if (pins == 10) {
-            if (isLastPlayer(currentPlayer)) {
-                currentPlayer = 0;
-            }
-            else {
-                currentPlayer += 1;
-            }
+            turnOver();
         }
 
         else if (currentRoll[currentPlayer] % 2 == 0) {
-            if (isLastPlayer(currentPlayer)) {
-                currentPlayer = 0;
-            }
-            else {
-                currentPlayer += 1;
-            }
+            turnOver();
         }
     }
 
@@ -57,6 +47,15 @@ public class BowlingGame {
         }
 
         return score;
+    }
+
+    private void turnOver() {
+        if (isLastPlayer(currentPlayer)) {
+            currentPlayer = 0;
+        }
+        else {
+            currentPlayer += 1;
+        }
     }
 
     private boolean isStrike(int frameIndex, int playerId) { return rolls[playerId][frameIndex] == 10; }
