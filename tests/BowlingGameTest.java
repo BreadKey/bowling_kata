@@ -65,6 +65,14 @@ class BowlingGameTest {
         assertEquals(7, bowlingGame.score(0));
     }
 
+    @Test
+    public void testCurrentPlyaerAfterStrike() {
+        BowlingGame bowlingGame = new BowlingGame(2);
+        bowlingGame.roll(10); // strike
+
+        assertEquals(1, bowlingGame.getCurrentPlayer());
+    }
+
     private void rollMany(int n, int pins) {
         for (int i = 0; i < n; i++) {
             soloBowlingGame.roll(pins);
